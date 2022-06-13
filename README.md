@@ -1,6 +1,7 @@
 # meme-generator
  simple meme generator
- # DrumTab
+ # GTOGBES Meme Generator![amplify meme generator](https://user-images.githubusercontent.com/70475985/173437936-ad458329-39be-46b1-9f36-199bd039bb39.jpg)
+
 This project,  is a Meme generator. It is a demonstration on a simple web hosting with AWS amplify,  It has a place holder for meme text and another one for the meme image.
 
 This project will focus on CICD deployment of webapp using AWS amplify, this can also be achieved using  S3 and content Delivery network; Cloudfront. 
