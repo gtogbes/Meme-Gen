@@ -1,4 +1,5 @@
 version: 2.1
+
 commands:
   print_pipeline_id:
     steps:
@@ -10,60 +11,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id
-jobs:
-  print_hello:
-    docker: 
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo hello
-  
-  print_world: 
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo world
-  build:
-    docker:
-      - image: cimg/base:2020.01
-    steps:
-      - checkout
-      - run:
-          name: "echo an env var that is part of our project"
-          command: |
-            echo $MY_ENV_VAR
-  save_hello_world_output:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - run: echo "hello world" > ~/output.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - output.txt
 
-  print_output_file:
-    docker:
-      - image: circleci/node:13.8.0
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: cat ~/output.txt          
 workflows:
-  welcome:
-    jobs:
-      - print_hello
-      - print_world:
-          requires:
-            - print_hello
-  gt_env-vars:
-    jobs:
-      - build
   my_workflow:
-    jobs:
-      - save_hello_world_output
-      - print_output_file:
-          requires:
-            - save_hello_world_output
-  command_workflow:
     jobs:
       - my_job
